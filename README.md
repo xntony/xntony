@@ -1,16 +1,40 @@
-## Hi there 👋
+# Hi there 👋, I'm Anthony
 
-<!--
-**xntony/xntony** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## 🚀 About Me
+- 🌍 Based in Nairobi, Kenya
+- 💻 Network Engineering Enthusiast
+- 🐳 Docker & Microservices Developer
+- 🌐 Interested in CCNA, Networking, Linux, and Web Development
+- ⚡ Building full-stack applications
 
-Here are some ideas to get you started:
+---
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## 🛠️ Skills
+
+### Languages
+- JavaScript
+- TypeScript
+- SQL
+- Bash
+- C/C++
+
+### Frameworks & Tools
+- Node.js
+- Express.js
+- Docker
+- PostgreSQL
+- Git & GitHub
+
+### Networking
+- CCNA
+- OSPF
+- BGP
+- VLANs
+- Linux Administration
+
+
+---
+
+## 📫 Contact Me
+- GitHub: https://github.com/xntony
+- LinkedIn: https://www.linkedin.com/in/antony-onyango-5a6a8a14b
