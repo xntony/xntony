@@ -50,19 +50,17 @@ I’m particularly interested in:
 
 ## GitHub Analytics
 
-<!-- GitHub Stats -->
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=xntony&show_icons=true&theme=tokyonight" />
-</p>
-
 <!-- Streak Stats -->
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=xntony&theme=tokyonight" />
+  <img height="180em" src="https://streak-stats.demolab.com?user=xntony&theme=tokyonight" />
 </p>
 
-<!-- Top Languages -->
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=xntony&layout=compact&theme=tokyonight" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=xntony&theme=tokyonight" />
+</p>
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=xntony&theme=tokyonight" />
 </p>
 
 ---
