@@ -5,9 +5,6 @@ on:
     - cron: "0 */6 * * *"
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   update-readme:
     name: Update README with WakaTime stats
@@ -29,4 +26,3 @@ jobs:
           TIME_RANGE: all_time
           LANG_COUNT: 8
           CODE_LANG: txt
-          SHOW_LOC_CHART: true
