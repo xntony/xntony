@@ -61,4 +61,17 @@ I’m particularly interested in:
 ## Weekly Development Breakdown
 
 <!--START_SECTION:waka-->
+
+```txt
+From: 18 May 2026 - To: 29 May 2026
+
+Total Time: 3 hrs 29 mins
+
+JavaScript   1 hr 17 mins          ████████▒░░░░░░░░░░░░░░░░   33.86 %
+Bash         1 hr 16 mins          ████████▒░░░░░░░░░░░░░░░░   33.11 %
+Markdown     33 mins               ███▓░░░░░░░░░░░░░░░░░░░░░   14.55 %
+HTML         22 mins               ██▒░░░░░░░░░░░░░░░░░░░░░░   09.68 %
+Other        20 mins               ██▒░░░░░░░░░░░░░░░░░░░░░░   08.81 %
+```
+
 <!--END_SECTION:waka-->
