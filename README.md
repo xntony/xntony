@@ -58,7 +58,7 @@ I’m particularly interested in:
 
 ---
 
-## Weekly Development Breakdown
+## Weekly Development Breakdown (Wakatime)
 
 <!--START_SECTION:waka-->
 
