@@ -33,7 +33,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s}
 .nav-links a:hover{color:var(--text)}
 .nav-links a:hover::after{width:100%}
-.nav-cta{background:var(--accent);color:#000;padding:.55rem 1.4rem;border-radius:40px;font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.nav-cta{background:var(--accent);color:#000;padding:.55rem 1.4rem;border-radius:40px;font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
 .nav-cta:hover{background:#fff;transform:scale(1.04)}
 
 /* HERO */
@@ -103,6 +103,9 @@ section{padding:6rem 3rem}
 .card-desc{font-size:.85rem;color:var(--muted);line-height:1.7}
 .card-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
 .tag{background:rgba(255,255,255,.05);border-radius:6px;padding:.2rem .7rem;font-size:.72rem;color:var(--muted)}
+.card-more{display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;font-size:.78rem;color:var(--accent);font-weight:600;letter-spacing:.5px}
+.card-more i{font-size:.7rem;transition:transform .2s}
+.work-card:hover .card-more i{transform:translateX(3px)}
 
 /* TIMELINE */
 #experience{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
@@ -140,6 +143,28 @@ footer span{font-size:.78rem;color:var(--muted)}
 /* NOISE GRAIN */
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
 
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:24px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;position:relative;transform:translateY(24px) scale(.97);transition:transform .3s}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-header{padding:2rem 2rem 1rem;border-bottom:1px solid var(--border);position:relative}
+.modal-icon{width:52px;height:52px;background:rgba(200,255,0,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--accent);margin-bottom:1rem}
+.modal-title{font-size:1.3rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.3rem}
+.modal-subtitle{font-size:.85rem;color:var(--muted)}
+.modal-close{position:absolute;top:1.5rem;right:1.5rem;width:36px;height:36px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .2s}
+.modal-close:hover{border-color:var(--accent);color:var(--accent)}
+.modal-body{padding:1.5rem 2rem 2rem}
+.modal-section{margin-bottom:1.5rem}
+.modal-section-label{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.7rem}
+.modal-desc{font-size:.9rem;color:var(--muted);line-height:1.8}
+.modal-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.modal-tag{background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.2);border-radius:8px;padding:.3rem .8rem;font-size:.75rem;color:var(--accent)}
+.modal-links{display:flex;flex-wrap:wrap;gap:.8rem}
+.modal-link{display:inline-flex;align-items:center;gap:.5rem;background:var(--card);border:1px solid var(--border);border-radius:40px;padding:.55rem 1.2rem;font-size:.82rem;color:var(--text);text-decoration:none;transition:all .3s}
+.modal-link:hover{border-color:var(--accent);color:var(--accent)}
+.modal-link i{font-size:.8rem}
+
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}
   .nav-links{display:none}
@@ -152,6 +177,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   section{padding:4rem 1.5rem}
   #about,#experience{grid-template-columns:1fr;gap:2.5rem}
   footer{flex-direction:column;gap:1rem;text-align:center}
+  .modal-body,.modal-header{padding:1.2rem}
 }
 </style>
 </head>
@@ -169,7 +195,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Let's Talk</a>
+  <a href="https://drive.google.com/your-cv-link" target="_blank" rel="noopener" class="nav-cta"><i class="fas fa-file-alt"></i> My CV</a>
 </nav>
 
 <!-- HERO -->
@@ -189,7 +215,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     </div>
     <div class="hero-socials">
       <a href="https://github.com/xntony" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/antony-onyango-5a6a8a14b/" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.linkedin.com/in/antony-onyango" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       <a href="mailto:antony.otieno.onyango@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
     </div>
   </div>
@@ -198,23 +224,15 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="photo-frame">
       <div class="photo-bg-shape"></div>
       <div class="photo-accent-ring"></div>
-      <!-- REPLACE photo.png WITH YOUR PHOTO FILE -->
       <img src="photo/photo.png" alt="Antony Onyango" class="photo-img" onerror="this.style.display='none';document.getElementById('photoFallback').style.display='flex'"/>
       <div class="photo-placeholder" id="photoFallback" style="display:none">
         <i class="fas fa-user-circle"></i>
         <span>photo.png</span>
       </div>
       <div class="badge badge-exp">
-        <div class="num">5+</div>
-        <div class="lbl">Years Programming</div>
+        <div class="num">3+</div>
+        <div class="lbl">Years Teaching</div>
       </div>
-<!--
-      <div class="badge badge-stack">
-        <div class="num">10+</div>
-        <div class="lbl">Tech Skills</div>
-      </div>
--->
-
     </div>
   </div>
 
@@ -230,34 +248,31 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <span class="section-label">About Me</span>
     <h2 class="section-title">Educator.<br>Engineer.<br>Builder.</h2>
     <div class="about-stats">
-      <div class="stat-card"><div class="n">BSc</div><div class="l">Applied Computer Technology</div></div>
-      <div class="stat-card"><div class="n">PGDE-TVET</div><div class="l">Postgraduate Diploma in Education</div></div>
-      <div class="stat-card"><div class="n">ALX</div><div class="l">Data Eng · Cybersecurity</div></div>
-<!--
-      <div class="stat-card"><div class="n">KRaft</div><div class="l">Kafka Banking Pipeline</div></div>
-      <div class="stat-card"><div class="n">npm</div><div class="l">node-file-ops Published</div></div>
--->
+      <div class="stat-card"><div class="n">BSc</div><div class="l">Applied Computer Technology — USIU–Africa</div></div>
+      <div class="stat-card"><div class="n">ALX</div><div class="l">Data Engineering · Cybersecurity SOC</div></div>
     </div>
   </div>
   <div class="reveal">
     <div class="about-text">
-      <p>I'm a Technical Trainer and IT Lecturer at Kenya Christian Industrial Training Institute (KCITI), where I teach Operating Systems, Computer Networking, Structured Programming in C, and Microsoft Office Applications.</p>
+      <p>I'm a Technical Trainer at Kenya Christian Industrial Training Institute (KCITI), where I teach Operating Systems, Computer Networking, Structured Programming in C, and Microsoft Office Applications.</p>
       <p>I hold a BSc in Applied Computer Technology (Distributed Systems &amp; Mobile Computing) from USIU–Africa and am currently enrolled in ALX Africa's Data Engineering and Cybersecurity (SOC Analyst) programs.</p>
-      <p>My passion lies at the intersection of education, technology, and local impact — building systems that tackle real challenges like youth unemployment and FinTech in Nairobi.</p>
+      <p>My passion lies at the intersection of education, technology, and local impact — building systems that tackle real challenges like FinTech and data infrastructure in Nairobi.</p>
     </div>
     <div class="skills-row">
-      <span class="skill-tag">Node.js</span>
       <span class="skill-tag">Apache Kafka</span>
+      <span class="skill-tag">Apache Airflow</span>
+      <span class="skill-tag">Apache Spark</span>
+      <span class="skill-tag">dbt</span>
+      <span class="skill-tag">Snowflake</span>
+      <span class="skill-tag">Node.js</span>
       <span class="skill-tag">PostgreSQL</span>
-      <span class="skill-tag">Redis</span>
       <span class="skill-tag">Python</span>
+      <span class="skill-tag">MySQL</span>
       <span class="skill-tag">Linux</span>
       <span class="skill-tag">Networking</span>
-      <span class="skill-tag">Kali Linux</span>
-      <span class="skill-tag">Android / Java</span>
+      <span class="skill-tag">SIEM / IDS</span>
       <span class="skill-tag">Express.js</span>
-      <span class="skill-tag">MySQL</span>
-      <span class="skill-tag">Data Engineering</span>
+      <span class="skill-tag">Cisco Packet Tracer</span>
     </div>
   </div>
 </section>
@@ -267,39 +282,58 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="reveal" style="text-align:center">
     <span class="section-label">Selected Work</span>
     <h2 class="section-title">Projects I've Built</h2>
-    <p class="section-sub" style="margin:0 auto 3.5rem">Real-world systems solving real problems — from M-Pesa-scale banking pipelines to expiry alert management and RESTful APIs.</p>
+    <p class="section-sub" style="margin:0 auto 3.5rem">Real-world systems solving real problems — from banking-scale data pipelines to expiry alert management and network simulations.</p>
   </div>
   <div class="work-grid">
-    <div class="work-card reveal">
+
+    <div class="work-card reveal" onclick="openModal('kafka')">
       <div class="card-icon"><i class="fas fa-stream"></i></div>
       <div class="card-title">Kafka Banking Pipeline</div>
-      <div class="card-desc">M-Pesa–scale transaction processing system using Apache Kafka in KRaft mode, KafkaJS, Express, PostgreSQL, PgBouncer, and Redis with batch throughput analysis.</div>
+      <div class="card-desc">High-throughput banking transaction system using Apache Kafka in KRaft mode — simulating real-world financial data pipelines with atomic transactions and parallel consumers.</div>
       <div class="card-tags"><span class="tag">Kafka</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span></div>
+      <div class="card-more">Learn more <i class="fas fa-arrow-right"></i></div>
     </div>
-    <div class="work-card reveal">
+
+    <div class="work-card reveal" onclick="openModal('peams')">
       <div class="card-icon"><i class="fas fa-boxes"></i></div>
       <div class="card-title">PEAMS</div>
-      <div class="card-desc">Product Expiry and Alert Management System built with Node.js, Express, and MySQL2. Tracks inventory expiry dates with automated alerts for businesses.</div>
-      <div class="card-tags"><span class="tag">Express.js</span><span class="tag">MySQL2</span><span class="tag">Node.js</span></div>
+      <div class="card-desc">Product Expiry and Alert Management System — a full-stack web app with JWT auth, bcrypt hashing, and MySQL connection pooling to track inventory expiry for businesses.</div>
+      <div class="card-tags"><span class="tag">Express.js</span><span class="tag">MySQL2</span><span class="tag">Node.js</span><span class="tag">JWT</span></div>
+      <div class="card-more">Learn more <i class="fas fa-arrow-right"></i></div>
     </div>
-    <div class="work-card reveal">
+
+    <div class="work-card reveal" onclick="openModal('plcapi')">
       <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
       <div class="card-title">PLC_API + Android App</div>
       <div class="card-desc">Dynamic RESTful Express API powering an Android app built with Retrofit in Java. Includes cleartext HTTP config for local networks and card layout with RecyclerView.</div>
       <div class="card-tags"><span class="tag">REST API</span><span class="tag">Android</span><span class="tag">Retrofit</span><span class="tag">Java</span></div>
+      <div class="card-more">Learn more <i class="fas fa-arrow-right"></i></div>
     </div>
-    <div class="work-card reveal">
+
+    <div class="work-card reveal" onclick="openModal('nodefileops')">
       <div class="card-icon"><i class="fab fa-npm"></i></div>
       <div class="card-title">node-file-ops</div>
-      <div class="card-desc">Published npm package providing utility functions for Node.js file operations. Available on the npm registry at github.com/xntony.</div>
+      <div class="card-desc">Published npm package providing utility functions for Node.js file operations — demonstrating software packaging, semantic versioning, and open-source contribution practices.</div>
       <div class="card-tags"><span class="tag">npm</span><span class="tag">Node.js</span><span class="tag">Open Source</span></div>
+      <div class="card-more">Learn more <i class="fas fa-arrow-right"></i></div>
     </div>
-    <div class="work-card reveal">
-      <div class="card-icon"><i class="fas fa-users"></i></div>
-      <div class="card-title">HerVenture Platform</div>
-      <div class="card-desc">Wireframe and concept design for a women entrepreneur platform (Honey Badger Team), built during ALX Africa program using HCD and Design Thinking methodologies.</div>
-      <div class="card-tags"><span class="tag">HCD</span><span class="tag">UX Design</span><span class="tag">ALX Africa</span></div>
+
+    <div class="work-card reveal" onclick="openModal('cisco')">
+      <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+      <div class="card-title">Campus Network Simulation</div>
+      <div class="card-desc">Multi-floor campus network topology in Cisco Packet Tracer with inter-VLAN routing, OSPF/RIP dynamic routing, ACLs, and port security across multiple LANs.</div>
+      <div class="card-tags"><span class="tag">Cisco</span><span class="tag">OSPF</span><span class="tag">VLANs</span><span class="tag">ACLs</span></div>
+      <div class="card-more">Learn more <i class="fas fa-arrow-right"></i></div>
     </div>
+
+    <div class="work-card reveal" onclick="openModal('pdfreplace')">
+      <div class="card-icon"><i class="fas fa-file-pdf"></i></div>
+      <div class="card-title">pdfReplace</div>
+      <div class="card-desc">CLI automation script for a water bottling company to streamline custom bottle label generation — uses PyMuPDF to replace embedded images in a single command.</div>
+      <div class="card-tags"><span class="tag">Python</span><span class="tag">PyMuPDF</span><span class="tag">CLI</span><span class="tag">Automation</span></div>
+      <div class="card-more">Learn more <i class="fas fa-arrow-right"></i></div>
+    </div>
+
   </div>
 </section>
 
@@ -312,44 +346,49 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="about-stats" style="grid-template-columns:1fr">
       <div class="stat-card">
         <div class="n" style="font-size:1.1rem;color:var(--text)">🎓 Education</div>
-        <div class="l">BSc Applied Computer Technology — USIU–Africa</div>
+        <div class="l">BSc Applied Computer Technology — USIU–Africa (Dec 2022)</div>
       </div>
       <div class="stat-card">
         <div class="n" style="font-size:1.1rem;color:var(--text)">📚 ALX Africa</div>
-        <div class="l">Data Engineering (14mo) + Cybersecurity SOC (7mo)</div>
+        <div class="l">Data Engineering (Feb 2026 – Apr 2027) · Cybersecurity SOC (Feb 2026 – Sep 2026)</div>
       </div>
     </div>
   </div>
   <div class="reveal">
     <div class="timeline">
+
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-date">2023 — PRESENT</div>
-        <div class="tl-role">Technical Trainer & IT Lecturer</div>
-        <div class="tl-org">Kenya Christian Industrial Training Institute (KCITI)</div>
-        <div class="tl-desc">Teaching Operating Systems, Computer Networking, Structured Programming in C, and Microsoft Office/Computer Applications. Developed full examination papers and course outlines.</div>
+        <div class="tl-date">JAN 2025 — PRESENT</div>
+        <div class="tl-role">Technical Trainer</div>
+        <div class="tl-org">Kenya Christian Industrial Training Institute (KCITI), Nairobi</div>
+        <div class="tl-desc">Designed and delivered structured lessons on Operating Systems, Computer Networking, Programming, and Microsoft Office. Developed practical lab exercises and assessments using Cisco Packet Tracer and GCC compiler, improving student project completion rates and technical competency.</div>
       </div>
+
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-date">2024 — PRESENT</div>
-        <div class="tl-role">Data Engineering Learner</div>
-        <div class="tl-org">ALX Africa</div>
-        <div class="tl-desc">14-month intensive program covering data pipelines, Kafka, Airflow, Spark, and cloud platforms. Applying concepts to local FinTech and SACCO use cases in Nairobi.</div>
+        <div class="tl-date">JUL 2024 — JAN 2025</div>
+        <div class="tl-role">Retail Sales Merchandiser</div>
+        <div class="tl-org">Smollan Group, Nairobi</div>
+        <div class="tl-desc">Implemented in-store merchandising strategies aligned with brand standards to enhance product visibility. Managed inventory, monitored competitor activity, and collaborated with store managers to support product launches and promotional campaigns.</div>
       </div>
+
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-date">2024 — PRESENT</div>
-        <div class="tl-role">Cybersecurity — SOC Analyst Track</div>
-        <div class="tl-org">ALX Africa</div>
-        <div class="tl-desc">7-month program focused on Security Operations Center analysis, threat detection, SIEM tools, and incident response using Kali Linux and Parrot OS.</div>
+        <div class="tl-date">MAR 2023 — FEB 2024</div>
+        <div class="tl-role">Elevator Technician</div>
+        <div class="tl-org">Greymark Elevators, Nairobi</div>
+        <div class="tl-desc">Installed, maintained, and repaired elevator systems to manufacturer and safety standards. Diagnosed mechanical and electrical faults using advanced testing equipment and coordinated with building owners to minimize downtime.</div>
       </div>
+
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-date">2024</div>
-        <div class="tl-role">Postgraduate Diploma in Education</div>
-        <div class="tl-org">In Progress</div>
-        <div class="tl-desc">Deepening pedagogical skills to complement technical expertise and elevate classroom delivery in tertiary IT education.</div>
+        <div class="tl-date">SEP 2022 — DEC 2022</div>
+        <div class="tl-role">IT Service Support (Apprenticeship)</div>
+        <div class="tl-org">Kenya Revenue Authority (KRA), Nairobi</div>
+        <div class="tl-desc">Provided first-line IT support to staff across departments, resolving software issues and service incidents within agreed response times. Coordinated the retirement and replacement of outdated technology assets to improve operational efficiency.</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -365,8 +404,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       antony.otieno.onyango@gmail.com
     </a>
     <div class="contact-socials">
-      <a href="https://github.com/xntony" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/antony-onyango-5a6a8a14b/" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/xntony" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/antony-onyango" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="tel:+254706122301" class="social-link" title="Phone"><i class="fas fa-phone"></i></a>
     </div>
   </div>
 </section>
@@ -377,7 +417,231 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <span>github.com/xntony</span>
 </footer>
 
+<!-- ══════════════ MODALS ══════════════ -->
+
+<div class="modal-overlay" id="modal-kafka" onclick="handleOverlayClick(event,'modal-kafka')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon"><i class="fas fa-stream"></i></div>
+      <div class="modal-title">Kafka Banking Pipeline</div>
+      <div class="modal-subtitle">Data Engineering · Event Streaming</div>
+      <button class="modal-close" onclick="closeModal('modal-kafka')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">Overview</div>
+        <div class="modal-desc">Architected a high-throughput banking transaction system using Apache Kafka in KRaft mode, simulating real-world financial data pipelines at scale. The system handles atomic transactions, batch processing, and multiple operation types including deposits, withdrawals, and transfers — with parallel consumers enabling concurrent workload handling. Designed to mirror M-Pesa-scale transaction volumes relevant to the Kenyan FinTech ecosystem.</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Key Features</div>
+        <div class="modal-desc">KRaft mode (no ZooKeeper dependency) · Atomic transactions with rollback support · Parallel consumer groups · Batch throughput benchmarking · PostgreSQL persistence with PgBouncer connection pooling · Redis caching layer for hot data</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Tech Stack</div>
+        <div class="modal-tags">
+          <span class="modal-tag">Apache Kafka</span>
+          <span class="modal-tag">KRaft</span>
+          <span class="modal-tag">KafkaJS</span>
+          <span class="modal-tag">Node.js</span>
+          <span class="modal-tag">Express</span>
+          <span class="modal-tag">PostgreSQL</span>
+          <span class="modal-tag">PgBouncer</span>
+          <span class="modal-tag">Redis</span>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Links</div>
+        <div class="modal-links">
+          <a href="https://github.com/xntony" target="_blank" class="modal-link"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-peams" onclick="handleOverlayClick(event,'modal-peams')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon"><i class="fas fa-boxes"></i></div>
+      <div class="modal-title">PEAMS</div>
+      <div class="modal-subtitle">Product Expiry &amp; Alert Management System</div>
+      <button class="modal-close" onclick="closeModal('modal-peams')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">Overview</div>
+        <div class="modal-desc">A full-stack web application designed to help businesses track product expiry dates and receive automated alerts before stock goes to waste. Built with Node.js, Express, and MySQL, it features secure user authentication and is targeted at SMEs in retail and food distribution sectors in Kenya.</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Key Features</div>
+        <div class="modal-desc">JWT-based authentication · bcrypt password hashing · MySQL connection pooling · Automated expiry alerts · Inventory dashboard · RESTful API architecture</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Tech Stack</div>
+        <div class="modal-tags">
+          <span class="modal-tag">Node.js</span>
+          <span class="modal-tag">Express.js</span>
+          <span class="modal-tag">MySQL2</span>
+          <span class="modal-tag">JWT</span>
+          <span class="modal-tag">bcrypt</span>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Links</div>
+        <div class="modal-links">
+          <a href="https://github.com/xntony" target="_blank" class="modal-link"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-plcapi" onclick="handleOverlayClick(event,'modal-plcapi')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon"><i class="fas fa-mobile-alt"></i></div>
+      <div class="modal-title">PLC_API + Android App</div>
+      <div class="modal-subtitle">REST API · Android · Java</div>
+      <button class="modal-close" onclick="closeModal('modal-plcapi')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">Overview</div>
+        <div class="modal-desc">A dynamic RESTful API built with Express.js that powers a native Android application written in Java. The API handles data exchange with the Android client using Retrofit, demonstrating full mobile-backend integration. Includes cleartext HTTP configuration for local network deployment and a clean card layout with RecyclerView on the Android side.</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Key Features</div>
+        <div class="modal-desc">RESTful endpoint design · Retrofit HTTP client integration · RecyclerView card layout · Local network cleartext HTTP config · JSON data exchange</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Tech Stack</div>
+        <div class="modal-tags">
+          <span class="modal-tag">Express.js</span>
+          <span class="modal-tag">Node.js</span>
+          <span class="modal-tag">Java</span>
+          <span class="modal-tag">Android SDK</span>
+          <span class="modal-tag">Retrofit</span>
+          <span class="modal-tag">RecyclerView</span>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Links</div>
+        <div class="modal-links">
+          <a href="https://github.com/xntony" target="_blank" class="modal-link"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-nodefileops" onclick="handleOverlayClick(event,'modal-nodefileops')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon"><i class="fab fa-npm"></i></div>
+      <div class="modal-title">node-file-ops</div>
+      <div class="modal-subtitle">Published npm Package · Open Source</div>
+      <button class="modal-close" onclick="closeModal('modal-nodefileops')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">Overview</div>
+        <div class="modal-desc">A published and maintained npm package providing utility functions for common Node.js file system operations. Demonstrates software packaging, semantic versioning, and open-source contribution practices — available on the public npm registry for use by other developers.</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Key Features</div>
+        <div class="modal-desc">Published to npm public registry · Semantic versioning · Utility functions for file I/O · Open source with documentation · Reusable across Node.js projects</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Tech Stack</div>
+        <div class="modal-tags">
+          <span class="modal-tag">Node.js</span>
+          <span class="modal-tag">npm</span>
+          <span class="modal-tag">JavaScript</span>
+          <span class="modal-tag">Open Source</span>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Links</div>
+        <div class="modal-links">
+          <a href="https://www.npmjs.com/~xntony" target="_blank" class="modal-link"><i class="fab fa-npm"></i> npm Registry</a>
+          <a href="https://github.com/xntony" target="_blank" class="modal-link"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-cisco" onclick="handleOverlayClick(event,'modal-cisco')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon"><i class="fas fa-network-wired"></i></div>
+      <div class="modal-title">Campus Network Simulation</div>
+      <div class="modal-subtitle">Cisco Packet Tracer · Computer Networking</div>
+      <button class="modal-close" onclick="closeModal('modal-cisco')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">Overview</div>
+        <div class="modal-desc">Designed and simulated a multi-floor campus network topology in Cisco Packet Tracer. The topology incorporates inter-VLAN routing, dynamic routing protocols (OSPF and RIP), and switch configuration across multiple LANs. Configured routers, Layer 2 and Layer 3 switches, and end devices to demonstrate full network device management in a realistic enterprise environment.</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Key Features</div>
+        <div class="modal-desc">Inter-VLAN routing · OSPF and RIP dynamic routing · Standard and Extended ACLs for traffic control · Port security on switches · Layer 2 and Layer 3 switch configuration · Multi-floor topology design</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Tech Stack</div>
+        <div class="modal-tags">
+          <span class="modal-tag">Cisco Packet Tracer</span>
+          <span class="modal-tag">OSPF</span>
+          <span class="modal-tag">RIP</span>
+          <span class="modal-tag">VLANs</span>
+          <span class="modal-tag">STP</span>
+          <span class="modal-tag">ACLs</span>
+          <span class="modal-tag">Port Security</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-pdfreplace" onclick="handleOverlayClick(event,'modal-pdfreplace')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon"><i class="fas fa-file-pdf"></i></div>
+      <div class="modal-title">pdfReplace</div>
+      <div class="modal-subtitle">CLI Automation · Python · PyMuPDF</div>
+      <button class="modal-close" onclick="closeModal('modal-pdfreplace')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">Overview</div>
+        <div class="modal-desc">A command-line automation tool built for a water bottling company to streamline the generation of custom bottle label templates. Uses the PyMuPDF library to replace images embedded in a source PDF with a new design in a single command — eliminating the need for manual editing in design software for each label iteration and significantly reducing turnaround time for new label designs.</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Key Features</div>
+        <div class="modal-desc">Single-command image replacement in PDFs · PyMuPDF-powered PDF manipulation · CLI interface for easy use by non-developers · Significant reduction in label production time · Batch-compatible for multiple label variants</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Tech Stack</div>
+        <div class="modal-tags">
+          <span class="modal-tag">Python</span>
+          <span class="modal-tag">PyMuPDF</span>
+          <span class="modal-tag">CLI</span>
+          <span class="modal-tag">Automation</span>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Links</div>
+        <div class="modal-links">
+          <a href="https://github.com/xntony" target="_blank" class="modal-link"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+/* ── CURSOR ── */
 const cur = document.getElementById('cur');
 const ring = document.getElementById('curRing');
 let mx=0,my=0,rx=0,ry=0;
@@ -389,14 +653,17 @@ document.querySelectorAll('a,button').forEach(el=>{
   el.addEventListener('mouseleave',()=>{ring.style.transform='scale(1)';ring.style.borderColor='rgba(200,255,0,.4)'});
 });
 
+/* ── REVEAL ── */
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
 },{threshold:.15});
 document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
 
+/* ── NAV SHADOW ── */
 const nav=document.querySelector('nav');
 window.addEventListener('scroll',()=>{nav.style.boxShadow=window.scrollY>50?'0 2px 30px rgba(0,0,0,.4)':'none'});
 
+/* ── SMOOTH SCROLL ── */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     e.preventDefault();
@@ -405,9 +672,33 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
+/* ── PHOTO FALLBACK ── */
 const photoImg=document.querySelector('.photo-img');
 const fallback=document.getElementById('photoFallback');
-photoImg.addEventListener('load',()=>{fallback.style.display='none';photoImg.style.display='block'});
+if(photoImg){
+  photoImg.addEventListener('load',()=>{fallback.style.display='none';photoImg.style.display='block'});
+}
+
+/* ── MODALS ── */
+function openModal(id){
+  document.getElementById('modal-'+id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow='';
+}
+function handleOverlayClick(e,id){
+  if(e.target===document.getElementById(id)) closeModal(id);
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    document.querySelectorAll('.modal-overlay.open').forEach(m=>{
+      m.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  }
+});
 </script>
 </body>
 </html>

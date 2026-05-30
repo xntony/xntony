@@ -51,13 +51,6 @@ I’m particularly interested in:
 ## GitHub Analytics
 
 <!-- Streak Stats -->
-<p align="center">
-  <img height="180em" src="https://streak-stats.demolab.com?user=xntony&theme=tokyonight" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=xntony&theme=tokyonight" />
-</p>
 
 <p align="center">
   <img src="https://streak-stats.demolab.com?user=xntony&theme=tokyonight" />
