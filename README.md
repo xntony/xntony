@@ -1,40 +1,73 @@
-# Hi there 👋, I'm Anthony
+# Antony Onyango
 
-## 🚀 About Me
-- 🌍 Based in Nairobi, Kenya
-- 💻 Network Engineering Enthusiast
-- 🐳 Docker & Microservices Developer
-- 🌐 Interested in CCNA, Networking, Linux, and Web Development
-- ⚡ Building full-stack applications
+Data Engineering • Distributed Systems • Cybersecurity • Open Source
 
----
+I build backend systems, streaming pipelines, developer tooling, and infrastructure-focused applications with an emphasis on scalability, reliability, and practical engineering.
 
-## 🛠️ Skills
+Currently pursuing:
+- Data Engineering @ ALX Africa
+- Cybersecurity @ ALX Africa
+
+## Core Areas
+
+- Data Engineering
+- Distributed Systems
+- Backend Development
+- Streaming Architectures
+- Network Engineering
+- Security Engineering
+
+## Tech Stack
 
 ### Languages
-- JavaScript
-- TypeScript
-- SQL
-- Bash
-- C/C++
+Python • JavaScript • SQL • Bash • C
 
-### Frameworks & Tools
-- Node.js
-- Express.js
-- Docker
-- PostgreSQL
-- Git & GitHub
+### Data & Infrastructure
+Apache Kafka • Apache Spark • Airflow • dbt • Snowflake • Docker
 
-### Networking
-- CCNA
-- OSPF
-- BGP
-- VLANs
-- Linux Administration
+### Backend
+Node.js • Express • REST APIs • JWT Authentication
 
+### Networking & Security
+Cisco Packet Tracer • VLANs • OSPF • ACLs • IDS/IPS • SIEM
+
+### Tools
+Git • Linux • MySQL • PostgreSQL • GCC
 
 ---
 
-## 📫 Contact Me
-- GitHub: https://github.com/xntony
-- LinkedIn: https://www.linkedin.com/in/antony-onyango-5a6a8a14b
+## Open Source & Engineering Focus
+
+I’m particularly interested in:
+- Distributed systems design
+- Real-time data streaming
+- Infrastructure automation
+- Security-focused engineering
+- Developer tooling
+- High-performance backend systems
+
+---
+
+## GitHub Analytics
+
+<!-- GitHub Stats -->
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=xntony&show_icons=true&theme=tokyonight" />
+</p>
+
+<!-- Streak Stats -->
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=xntony&theme=tokyonight" />
+</p>
+
+<!-- Top Languages -->
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=xntony&layout=compact&theme=tokyonight" />
+</p>
+
+---
+
+## Weekly Development Breakdown
+
+<!--START_SECTION:waka-->
+<!--END_SECTION:waka-->

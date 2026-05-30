@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Antony — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;
+  --text:#f0f0f0;--muted:#888;--accent:#c8ff00;
+  --border:rgba(255,255,255,0.08);
+  --card:rgba(255,255,255,0.04);
+  --font:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:all .3s}
+.nav-logo{font-size:1.1rem;font-weight:700;letter-spacing:2px;color:var(--text)}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--accent);color:#000;padding:.55rem 1.4rem;border-radius:40px;font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.nav-cta:hover{background:#fff;transform:scale(1.04)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:0 3rem;position:relative;overflow:hidden}
+.hero-content{flex:1;z-index:2;max-width:580px}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--card);border:1px solid var(--border);border-radius:40px;padding:.4rem 1rem;font-size:.78rem;color:var(--muted);letter-spacing:1px;margin-bottom:2rem}
+.hero-tag .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero-name{font-size:clamp(3rem,7vw,6rem);font-weight:900;line-height:.95;letter-spacing:-2px;margin-bottom:.5rem}
+.hero-name .highlight{color:var(--accent)}
+.hero-title{font-size:clamp(1rem,2vw,1.3rem);color:var(--muted);font-weight:400;margin-bottom:1.8rem;line-height:1.6}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn-primary{background:var(--accent);color:#000;padding:.8rem 2rem;border-radius:40px;font-size:.85rem;font-weight:700;text-decoration:none;letter-spacing:.5px;transition:all .3s}
+.btn-primary:hover{background:#fff;transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--border);color:var(--text);padding:.8rem 2rem;border-radius:40px;font-size:.85rem;font-weight:500;text-decoration:none;letter-spacing:.5px;transition:all .3s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.hero-socials{display:flex;gap:1rem}
+.social-link{width:42px;height:42px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:50%;color:var(--muted);text-decoration:none;font-size:.95rem;transition:all .3s}
+.social-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+/* PHOTO */
+.hero-photo{flex:1;display:flex;justify-content:flex-end;align-items:center;z-index:2;position:relative}
+.photo-frame{position:relative;width:420px;height:520px}
+.photo-bg-shape{position:absolute;bottom:0;right:0;width:380px;height:470px;background:var(--bg3);border-radius:200px 200px 120px 120px;z-index:0}
+.photo-accent-ring{position:absolute;top:30px;right:20px;width:380px;height:470px;border:1px solid rgba(200,255,0,.15);border-radius:200px 200px 120px 120px;z-index:1}
+.photo-img{position:absolute;bottom:0;right:30px;width:360px;height:480px;object-fit:cover;object-position:top center;border-radius:180px 180px 100px 100px;z-index:2;filter:grayscale(20%)}
+.photo-placeholder{position:absolute;bottom:0;right:30px;width:360px;height:480px;border-radius:180px 180px 100px 100px;z-index:2;background:var(--bg3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;color:var(--muted);border:2px dashed var(--border)}
+.photo-placeholder i{font-size:3rem;color:var(--accent)}
+.photo-placeholder span{font-size:.85rem;letter-spacing:1px}
+.badge{position:absolute;z-index:10;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:.7rem 1.1rem;backdrop-filter:blur(8px)}
+.badge-exp{top:40px;left:-10px}
+.badge-stack{bottom:80px;left:-30px}
+.badge .num{font-size:1.4rem;font-weight:800;color:var(--accent)}
+.badge .lbl{font-size:.7rem;color:var(--muted);letter-spacing:.5px}
+
+/* SCROLL HINT */
+.scroll-hint{position:absolute;bottom:2.5rem;left:3rem;display:flex;align-items:center;gap:.8rem;color:var(--muted);font-size:.78rem;letter-spacing:1px}
+.scroll-line{width:40px;height:1px;background:var(--muted)}
+
+/* SECTIONS COMMON */
+section{padding:6rem 3rem}
+.section-label{display:inline-block;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-weight:600}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:.5rem}
+.section-sub{color:var(--muted);font-size:1rem;max-width:500px;line-height:1.7;margin-bottom:3.5rem}
+
+/* ABOUT */
+#about{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:border-color .3s}
+.stat-card:hover{border-color:rgba(200,255,0,.3)}
+.stat-card .n{font-size:2.2rem;font-weight:800;color:var(--accent)}
+.stat-card .l{font-size:.8rem;color:var(--muted);margin-top:.3rem}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:1rem;font-size:.95rem}
+.skills-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.skill-tag{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.35rem .9rem;font-size:.78rem;color:var(--muted);letter-spacing:.5px;transition:all .3s}
+.skill-tag:hover{border-color:var(--accent);color:var(--accent)}
+
+/* WORK / EXPERIENCE */
+#work{background:var(--bg2)}
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.work-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.8rem;transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
+.work-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);transform:scaleX(0);transition:transform .4s}
+.work-card:hover{border-color:rgba(200,255,0,.2);transform:translateY(-4px)}
+.work-card:hover::before{transform:scaleX(1)}
+.card-icon{width:48px;height:48px;background:rgba(200,255,0,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--accent);margin-bottom:1.2rem}
+.card-title{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.card-desc{font-size:.85rem;color:var(--muted);line-height:1.7}
+.card-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.tag{background:rgba(255,255,255,.05);border-radius:6px;padding:.2rem .7rem;font-size:.72rem;color:var(--muted)}
+
+/* TIMELINE */
+#experience{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
+.tl-item:last-child{border-bottom:none;margin-bottom:0}
+.tl-dot{position:absolute;left:-2.38rem;top:.3rem;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px rgba(200,255,0,.5)}
+.tl-date{font-size:.73rem;color:var(--accent);letter-spacing:1px;margin-bottom:.4rem;font-weight:600}
+.tl-role{font-size:1rem;font-weight:700;margin-bottom:.25rem}
+.tl-org{font-size:.85rem;color:var(--muted);margin-bottom:.7rem}
+.tl-desc{font-size:.83rem;color:var(--muted);line-height:1.7}
+
+/* CONTACT */
+#contact{text-align:center}
+.contact-inner{max-width:600px;margin:0 auto}
+.contact-email{display:inline-flex;align-items:center;gap:.8rem;background:var(--card);border:1px solid var(--border);border-radius:40px;padding:.8rem 1.8rem;font-size:.9rem;color:var(--text);text-decoration:none;margin-top:2rem;transition:all .3s}
+.contact-email:hover{border-color:var(--accent);color:var(--accent)}
+.contact-socials{display:flex;justify-content:center;gap:1rem;margin-top:2rem}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between}
+footer span{font-size:.78rem;color:var(--muted)}
+
+/* CURSOR DOT */
+.cursor{width:8px;height:8px;background:var(--accent);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform .1s}
+.cursor-ring{width:36px;height:36px;border:1px solid rgba(200,255,0,.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:all .12s ease-out}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s ease,transform .7s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+
+/* NOISE GRAIN */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  #hero{flex-direction:column;padding:6rem 1.5rem 3rem;gap:3rem}
+  .hero-photo{justify-content:center}
+  .photo-frame{width:280px;height:360px}
+  .photo-bg-shape,.photo-accent-ring{width:260px;height:320px}
+  .photo-img,.photo-placeholder{width:240px;height:340px}
+  .badge-exp,.badge-stack{display:none}
+  section{padding:4rem 1.5rem}
+  #about,#experience{grid-template-columns:1fr;gap:2.5rem}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">A<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Talk</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Available for opportunities
+    </div>
+    <h1 class="hero-name">
+      ANTONY<br><span class="highlight">ONYANGO</span>
+    </h1>
+    <p class="hero-title">Technical Trainer &amp; IT Lecturer<br>Data Engineer · Cybersecurity · Full-Stack Developer</p>
+    <div class="hero-btns">
+      <a href="#work" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://github.com/xntony" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/antony-onyango-5a6a8a14b/" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:antony.otieno.onyango@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <div class="hero-photo">
+    <div class="photo-frame">
+      <div class="photo-bg-shape"></div>
+      <div class="photo-accent-ring"></div>
+      <!-- REPLACE photo.png WITH YOUR PHOTO FILE -->
+      <img src="images/photo.png" alt="Antony Onyango" class="photo-img" onerror="this.style.display='none';document.getElementById('photoFallback').style.display='flex'"/>
+      <div class="photo-placeholder" id="photoFallback" style="display:none">
+        <i class="fas fa-user-circle"></i>
+        <span>photo.png</span>
+      </div>
+      <div class="badge badge-exp">
+        <div class="num">5+</div>
+        <div class="lbl">Years Programming</div>
+      </div>
+<!--
+      <div class="badge badge-stack">
+        <div class="num">10+</div>
+        <div class="lbl">Tech Skills</div>
+      </div>
+-->
+
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal-left">
+    <span class="section-label">About Me</span>
+    <h2 class="section-title">Educator.<br>Engineer.<br>Builder.</h2>
+    <div class="about-stats">
+      <div class="stat-card"><div class="n">BSc</div><div class="l">Applied Computer Technology</div></div>
+      <div class="stat-card"><div class="n">PGDE-TVET</div><div class="l">Postgraduate Diploma in Education</div></div>
+      <div class="stat-card"><div class="n">ALX</div><div class="l">Data Eng · Cybersecurity</div></div>
+<!--
+      <div class="stat-card"><div class="n">KRaft</div><div class="l">Kafka Banking Pipeline</div></div>
+      <div class="stat-card"><div class="n">npm</div><div class="l">node-file-ops Published</div></div>
+-->
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="about-text">
+      <p>I'm a Technical Trainer and IT Lecturer at Kenya Christian Industrial Training Institute (KCITI), where I teach Operating Systems, Computer Networking, Structured Programming in C, and Microsoft Office Applications.</p>
+      <p>I hold a BSc in Applied Computer Technology (Distributed Systems &amp; Mobile Computing) from USIU–Africa and am currently enrolled in ALX Africa's Data Engineering and Cybersecurity (SOC Analyst) programs.</p>
+      <p>My passion lies at the intersection of education, technology, and local impact — building systems that tackle real challenges like youth unemployment and FinTech in Nairobi.</p>
+    </div>
+    <div class="skills-row">
+      <span class="skill-tag">Node.js</span>
+      <span class="skill-tag">Apache Kafka</span>
+      <span class="skill-tag">PostgreSQL</span>
+      <span class="skill-tag">Redis</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">Linux</span>
+      <span class="skill-tag">Networking</span>
+      <span class="skill-tag">Kali Linux</span>
+      <span class="skill-tag">Android / Java</span>
+      <span class="skill-tag">Express.js</span>
+      <span class="skill-tag">MySQL</span>
+      <span class="skill-tag">Data Engineering</span>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="reveal" style="text-align:center">
+    <span class="section-label">Selected Work</span>
+    <h2 class="section-title">Projects I've Built</h2>
+    <p class="section-sub" style="margin:0 auto 3.5rem">Real-world systems solving real problems — from M-Pesa-scale banking pipelines to expiry alert management and RESTful APIs.</p>
+  </div>
+  <div class="work-grid">
+    <div class="work-card reveal">
+      <div class="card-icon"><i class="fas fa-stream"></i></div>
+      <div class="card-title">Kafka Banking Pipeline</div>
+      <div class="card-desc">M-Pesa–scale transaction processing system using Apache Kafka in KRaft mode, KafkaJS, Express, PostgreSQL, PgBouncer, and Redis with batch throughput analysis.</div>
+      <div class="card-tags"><span class="tag">Kafka</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span></div>
+    </div>
+    <div class="work-card reveal">
+      <div class="card-icon"><i class="fas fa-boxes"></i></div>
+      <div class="card-title">PEAMS</div>
+      <div class="card-desc">Product Expiry and Alert Management System built with Node.js, Express, and MySQL2. Tracks inventory expiry dates with automated alerts for businesses.</div>
+      <div class="card-tags"><span class="tag">Express.js</span><span class="tag">MySQL2</span><span class="tag">Node.js</span></div>
+    </div>
+    <div class="work-card reveal">
+      <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+      <div class="card-title">PLC_API + Android App</div>
+      <div class="card-desc">Dynamic RESTful Express API powering an Android app built with Retrofit in Java. Includes cleartext HTTP config for local networks and card layout with RecyclerView.</div>
+      <div class="card-tags"><span class="tag">REST API</span><span class="tag">Android</span><span class="tag">Retrofit</span><span class="tag">Java</span></div>
+    </div>
+    <div class="work-card reveal">
+      <div class="card-icon"><i class="fab fa-npm"></i></div>
+      <div class="card-title">node-file-ops</div>
+      <div class="card-desc">Published npm package providing utility functions for Node.js file operations. Available on the npm registry at github.com/xntony.</div>
+      <div class="card-tags"><span class="tag">npm</span><span class="tag">Node.js</span><span class="tag">Open Source</span></div>
+    </div>
+    <div class="work-card reveal">
+      <div class="card-icon"><i class="fas fa-users"></i></div>
+      <div class="card-title">HerVenture Platform</div>
+      <div class="card-desc">Wireframe and concept design for a women entrepreneur platform (Honey Badger Team), built during ALX Africa program using HCD and Design Thinking methodologies.</div>
+      <div class="card-tags"><span class="tag">HCD</span><span class="tag">UX Design</span><span class="tag">ALX Africa</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal-left">
+    <span class="section-label">Experience</span>
+    <h2 class="section-title">Where I've<br>Made Impact</h2>
+    <p class="section-sub">Teaching, building, and growing in technology education and software development across Kenya.</p>
+    <div class="about-stats" style="grid-template-columns:1fr">
+      <div class="stat-card">
+        <div class="n" style="font-size:1.1rem;color:var(--text)">🎓 Education</div>
+        <div class="l">BSc Applied Computer Technology — USIU–Africa</div>
+      </div>
+      <div class="stat-card">
+        <div class="n" style="font-size:1.1rem;color:var(--text)">📚 ALX Africa</div>
+        <div class="l">Data Engineering (14mo) + Cybersecurity SOC (7mo)</div>
+      </div>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2023 — PRESENT</div>
+        <div class="tl-role">Technical Trainer & IT Lecturer</div>
+        <div class="tl-org">Kenya Christian Industrial Training Institute (KCITI)</div>
+        <div class="tl-desc">Teaching Operating Systems, Computer Networking, Structured Programming in C, and Microsoft Office/Computer Applications. Developed full examination papers and course outlines.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024 — PRESENT</div>
+        <div class="tl-role">Data Engineering Learner</div>
+        <div class="tl-org">ALX Africa</div>
+        <div class="tl-desc">14-month intensive program covering data pipelines, Kafka, Airflow, Spark, and cloud platforms. Applying concepts to local FinTech and SACCO use cases in Nairobi.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024 — PRESENT</div>
+        <div class="tl-role">Cybersecurity — SOC Analyst Track</div>
+        <div class="tl-org">ALX Africa</div>
+        <div class="tl-desc">7-month program focused on Security Operations Center analysis, threat detection, SIEM tools, and incident response using Kali Linux and Parrot OS.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024</div>
+        <div class="tl-role">Postgraduate Diploma in Education</div>
+        <div class="tl-org">In Progress</div>
+        <div class="tl-desc">Deepening pedagogical skills to complement technical expertise and elevate classroom delivery in tertiary IT education.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <span class="section-label">Contact</span>
+    <h2 class="section-title">Let's Build<br>Something Together</h2>
+    <p class="section-sub" style="margin:0 auto 1rem">Open to collaborations, consulting, teaching opportunities, and international roles. Based in Nairobi — available globally.</p>
+    <a href="mailto:antony.otieno.onyango@gmail.com" class="contact-email">
+      <i class="fas fa-envelope"></i>
+      antony.otieno.onyango@gmail.com
+    </a>
+    <div class="contact-socials">
+      <a href="https://github.com/xntony" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/antony-onyango-5a6a8a14b/" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Antony Onyango — Built with ♥ in Nairobi</span>
+  <span>github.com/xntony</span>
+</footer>
+
+<script>
+const cur = document.getElementById('cur');
+const ring = document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx-4+'px';cur.style.top=my-4+'px'});
+function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx-18+'px';ring.style.top=ry-18+'px';requestAnimationFrame(animRing)}
+animRing();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.transform='scale(1.8)';ring.style.borderColor='rgba(200,255,0,.6)'});
+  el.addEventListener('mouseleave',()=>{ring.style.transform='scale(1)';ring.style.borderColor='rgba(200,255,0,.4)'});
+});
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.15});
+document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
+
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{nav.style.boxShadow=window.scrollY>50?'0 2px 30px rgba(0,0,0,.4)':'none'});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+const photoImg=document.querySelector('.photo-img');
+const fallback=document.getElementById('photoFallback');
+photoImg.addEventListener('load',()=>{fallback.style.display='none';photoImg.style.display='block'});
+</script>
+</body>
+</html>
