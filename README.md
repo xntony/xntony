@@ -63,18 +63,18 @@ I’m particularly interested in:
 <!--START_SECTION:waka-->
 
 ```txt
-From: 18 May 2026 - To: 04 June 2026
+From: 18 May 2026 - To: 05 June 2026
 
-Total Time: 16 hrs 37 mins
+Total Time: 18 hrs 22 mins
 
-JavaScript       7 hrs 53 mins         ███████████▓░░░░░░░░░░░░░   46.28 %
-Markdown         2 hrs 33 mins         ███▓░░░░░░░░░░░░░░░░░░░░░   14.99 %
-JSON             2 hrs 4 mins          ███░░░░░░░░░░░░░░░░░░░░░░   12.18 %
-Bash             1 hr 40 mins          ██▒░░░░░░░░░░░░░░░░░░░░░░   09.84 %
-RGBDS Assembly   41 mins               █░░░░░░░░░░░░░░░░░░░░░░░░   04.10 %
-YAML             40 mins               █░░░░░░░░░░░░░░░░░░░░░░░░   03.95 %
-SQL              32 mins               ▓░░░░░░░░░░░░░░░░░░░░░░░░   03.17 %
-HTML             30 mins               ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.97 %
+JavaScript       8 hrs 12 mins         ███████████░░░░░░░░░░░░░░   43.69 %
+Markdown         3 hrs 2 mins          ████░░░░░░░░░░░░░░░░░░░░░   16.19 %
+JSON             2 hrs 5 mins          ██▓░░░░░░░░░░░░░░░░░░░░░░   11.11 %
+Bash             1 hr 53 mins          ██▓░░░░░░░░░░░░░░░░░░░░░░   10.06 %
+SQL              1 hr 1 min            █▒░░░░░░░░░░░░░░░░░░░░░░░   05.45 %
+RGBDS Assembly   41 mins               █░░░░░░░░░░░░░░░░░░░░░░░░   03.72 %
+YAML             40 mins               █░░░░░░░░░░░░░░░░░░░░░░░░   03.59 %
+HTML             30 mins               ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.70 %
 ```
 
 <!--END_SECTION:waka-->
