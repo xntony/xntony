@@ -63,7 +63,7 @@ I’m particularly interested in:
 <!--START_SECTION:waka-->
 
 ```txt
-From: 18 May 2026 - To: 10 June 2026
+From: 18 May 2026 - To: 11 June 2026
 
 Total Time: 22 hrs 5 mins
 
