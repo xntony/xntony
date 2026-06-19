@@ -8,7 +8,7 @@ Currently pursuing:
 - Data Engineering @ ALX Africa
 - Cybersecurity @ ALX Africa
 
-## Core Areas
+## Core Areas of Focus
 
 - Data Engineering
 - Distributed Systems
@@ -33,18 +33,6 @@ Cisco Packet Tracer • VLANs • OSPF • ACLs • IDS/IPS • SIEM
 
 ### Tools
 Git • Linux • MySQL • PostgreSQL • GCC
-
----
-
-## Open Source & Engineering Focus
-
-I’m particularly interested in:
-- Distributed systems design
-- Real-time data streaming
-- Infrastructure automation
-- Security-focused engineering
-- Developer tooling
-- High-performance backend systems
 
 ---
 
