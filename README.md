@@ -51,18 +51,18 @@ Git • Linux • MySQL • PostgreSQL • GCC
 <!--START_SECTION:waka-->
 
 ```txt
-From: 18 May 2026 - To: 22 July 2026
+From: 18 May 2026 - To: 23 July 2026
 
-Total Time: 29 hrs 24 mins
+Total Time: 62 hrs 58 mins
 
-JavaScript       16 hrs 38 mins        ██████████████░░░░░░░░░░░   55.79 %
-Markdown         3 hrs 49 mins         ███▒░░░░░░░░░░░░░░░░░░░░░   12.85 %
-Bash             2 hrs 35 mins         ██▒░░░░░░░░░░░░░░░░░░░░░░   08.72 %
-JSON             2 hrs 17 mins         ██░░░░░░░░░░░░░░░░░░░░░░░   07.68 %
-HTML             1 hr 17 mins          █░░░░░░░░░░░░░░░░░░░░░░░░   04.31 %
-SQL              1 hr 7 mins           █░░░░░░░░░░░░░░░░░░░░░░░░   03.77 %
-RGBDS Assembly   41 mins               ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.34 %
-YAML             40 mins               ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.26 %
+JavaScript       46 hrs 2 mins         ██████████████████░░░░░░░   71.91 %
+Markdown         6 hrs 11 mins         ██▒░░░░░░░░░░░░░░░░░░░░░░   09.67 %
+JSON             2 hrs 35 mins         █░░░░░░░░░░░░░░░░░░░░░░░░   04.06 %
+Bash             2 hrs 31 mins         █░░░░░░░░░░░░░░░░░░░░░░░░   03.94 %
+SQL              2 hrs 17 mins         █░░░░░░░░░░░░░░░░░░░░░░░░   03.58 %
+HTML             1 hr 40 mins          ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.62 %
+Other            1 hr 2 mins           ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.63 %
+RGBDS Assembly   42 mins               ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.09 %
 ```
 
 <!--END_SECTION:waka-->
